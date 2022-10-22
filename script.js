@@ -12,7 +12,7 @@ const control = document.getElementById("control");
 var currentTrackName = document.getElementById("nowPlaying");
 
 function playAudio(track, name) {
-    audio.src = `./music/${track}.mp3`;
+    audio.src = `./${track}.mp3`;
     currentTrack = list.find(e=> e.track == track).trackNumber;
     currentTrackName.textContent = name.slice(0, -4);
     audio.play();
