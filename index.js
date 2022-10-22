@@ -50,8 +50,8 @@ async function run() {
     for(i in music){
       trackNumber++;
         content.push({
-            title: i.slice(0, -4),
-            track: `./music/${i}`,
+            title: `${music[i].slice(0, -4)}`,
+            track: `./music/${music[i]}`,
             trackNumber
         })
       }
