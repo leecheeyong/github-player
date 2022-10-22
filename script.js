@@ -13,7 +13,7 @@ var currentTrackName = document.getElementById("nowPlaying");
 
 function playAudio(track, name) {
     audio.src = `./music/${track}.mp3`;
-    currentTrack = track;
+    currentTrack = list.find(e=> e.track == track).trackNumber;
     currentTrackName.textContent = name.slice(0, -4);
     audio.play();
     control.innerHTML = pauseButton;
@@ -30,21 +30,21 @@ fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
         var music = document.createElement("div");
         music.textContent = e.name;
         music.onclick = () => {
-            playAudio(e.trackNumber, e.name);
+            playAudio(e.track, e.name);
         }     
         music.classList.add("music");
        playlist.appendChild(music);
     })
 });
 }
-playlist.onscroll = () => {
+/*playlist.onscroll = () => {
     if(playlist.scrollTop + playlist.clientHeight >= playlist.scrollHeight) {
         fetchPlaylist();
     }
-}
+}*/
 control.addEventListener("click", () => {
     if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].name);
+    if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].name);
     if (!playing) {
         playing = true;
         audio.play();
@@ -58,21 +58,21 @@ control.addEventListener("click", () => {
 
 audio.addEventListener("ended", () => {
     if(currentTrack == list.length) return;
-    playAudio(currentTrack + 1, list[currentTrack].name);
+    playAudio(list[currentTrack + 1].track, list[currentTrack].name);
 })
 
 document.getElementById("previous").addEventListener("click", () => {
     if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(1, list[0].name);
     if(currentTrack == 1) return;
-    playAudio(currentTrack - 1, list[currentTrack - 2].name);
+    playAudio(list[currentTrack - 1].track, list[currentTrack - 2].name);
 });
 
 document.getElementById("next").addEventListener("click", () => {
     if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(1, list[0].name);
     if(currentTrack == list.length) return;
-    playAudio(currentTrack + 1, list[currentTrack].name);
+    playAudio(list[currentTrack + 1].track, list[currentTrack].name);
 });
 
 audio.ontimeupdate = function () {
