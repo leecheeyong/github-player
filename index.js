@@ -49,8 +49,8 @@ async function run() {
     for(i in music){
       trackNumber++;
         content.push({
-            title: `${music[i].slice(0, -4)}`,
-            track: `./music/${music[i]}`,
+            title: `${encodedURIComponent(music[i].slice(0, -4))}`,
+            track: `./music/${encodedURIComponent(music[i])}`,
             trackNumber
         })
       }
