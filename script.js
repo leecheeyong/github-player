@@ -26,12 +26,12 @@ var playing = false;
 fetchPlaylist();
 function fetchPlaylist() {
 fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
-    list = r;
+    list = decodeURIComponent(r);
     r.forEach(e => {
         var music = document.createElement("div");
-        music.textContent = e.title;
+        music.textContent = decodeURIComponent(e.title);
         music.onclick = () => {
-            playAudio(e.track, e.title);
+            playAudio(decodeURIComponent(e.track), decodeURIComponent(e.title));
         }     
         music.classList.add("music");
        playlist.appendChild(music);
