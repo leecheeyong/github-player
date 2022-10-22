@@ -13,7 +13,8 @@ music.forEach(async (file) => {
     const stream = ytdl(video?.all[0].url, { filter: 'audioonly' });
     content.push({
       name: `${video?.all[0]?.title}`,
-      track: `/music/${video?.all[0]?.id}`
+      track: `/music/`,
+      data: video?.all[0]
     });
     fs.writeFileSync("./playlist.json", JSON.stringify(content));
     const stats = fs.statSync(`./music/${file}`);
