@@ -13,7 +13,6 @@ const content = [];
 const all = [];
 var trackNumber = 0;
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-      
 const getAudio = (video) => new Promise((resolve, reject) => {
     var stream = ytdl(video?.url, { filter: 'audioonly' });
     var file = fs.createWriteStream(`./music/${video?.title.split("/").join(" ").split(".").join(" ")}.mp3`);
@@ -59,7 +58,6 @@ async function run() {
 };
 
 run();
-
 
 
 process.on('uncaughtException', async function (err) {
