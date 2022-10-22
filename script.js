@@ -28,9 +28,9 @@ fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
     list = r;
     r.forEach(e => {
         var music = document.createElement("div");
-        music.textContent = e.name;
+        music.textContent = e.title;
         music.onclick = () => {
-            playAudio(e.track, e.name);
+            playAudio(e.track, e.title);
         }     
         music.classList.add("music");
        playlist.appendChild(music);
@@ -44,7 +44,7 @@ fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
 }*/
 control.addEventListener("click", () => {
     if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].name);
+    if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
     if (!playing) {
         playing = true;
         audio.play();
@@ -58,21 +58,21 @@ control.addEventListener("click", () => {
 
 audio.addEventListener("ended", () => {
     if(currentTrack == list.length) return;
-    playAudio(list[currentTrack + 1].track, list[currentTrack].name);
+    playAudio(list[currentTrack + 1].track, list[currentTrack].title);
 })
 
 document.getElementById("previous").addEventListener("click", () => {
     if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].name);
+    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].title);
     if(currentTrack == 1) return;
-    playAudio(list[currentTrack - 1].track, list[currentTrack - 2].name);
+    playAudio(list[currentTrack - 1].track, list[currentTrack - 2].title);
 });
 
 document.getElementById("next").addEventListener("click", () => {
     if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].name);
+    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].title);
     if(currentTrack == list.length) return;
-    playAudio(list[currentTrack + 1].track, list[currentTrack].name);
+    playAudio(list[currentTrack + 1].track, list[currentTrack].title);
 });
 
 audio.ontimeupdate = function () {
