@@ -1,32 +1,55 @@
-const ytdl = require('ytdl-core');
-const fs = require('fs');
-const yts = require('yt-search');
 const ffmpeg = require('fluent-ffmpeg');
-const { exec } = require('child_process');
-const content = [];
-var count = 0;
-const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
-fs.writeFileSync('./hello.txt', 'sup');
-music.forEach(async (file) => {
-  try {
-    const video = await yts(file.slice(0, -4));
-    const stream = ytdl(video?.all[0].url, { filter: 'audioonly' });
-    count++;
-    content.push({
-      name: `${video?.all[0]?.title}`,
-      track: `./music/${file}`,
-      id: `${video?.all[0]?.videoId}`,
-      trackNumber: count
-    });
-    fs.writeFileSync("./playlist.json", JSON.stringify(content));
-    const stats = fs.statSync(`./music/${file}`);
-    const fileSizeInBytes = stats.size;
-    const size = fileSizeInBytes / (1024*1024);
-    if(size > 1) return;
-    ffmpeg(stream)
-          .audioBitrate(128)
-          .format('mp3')
-          .save(fs.createWriteStream(`./music/${file}`, { flags: 'a' }));
-  }catch(e) {console.log(e)}
-})
+const ytdl = require('ytdl-core');
+const search = require("youtube-sr").default;
+const fs = require('fs');
+const { Collection } = require('@discordjs/collection');
+const collection = new Set();
+const collection2 = new Collection();
+const path = require('path');
+const downloaded = [];
+const cannot = [ ]
 
+
+
+const all = [];
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      
+const getAudio = (video) => new Promise((resolve, reject) => {
+    var stream = ytdl(video?.url, { filter: 'audioonly' });
+    var file = fs.createWriteStream(`./music/${video?.title.split("/").join(" ").split(".").join(" ")}.mp3`);
+    ffmpeg(stream)
+    .format('mp3') 
+    .save(file) 
+    .on('end', () => {
+        collection.add(`${video?.title}`); 
+        resolve(`Done ${video?.title}`);
+    })  
+});        
+
+async function run() {
+    const dir = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
+    for (i in dir) {
+        collection.add(dir[i].slice(0, -4));
+        downloaded.push(dir[i].slice(0, -4));
+    }      
+    await wait(5000);  
+    const data = (await search.getPlaylist("PLAYLIST_ID").then(playlist => playlist.fetch()));
+    if(!Array.isArray(data?.videos)) throw new Error("No videos found"); 
+     var videos = data.videos;  
+     for(i in videos) { 
+        all.push(videos[i].title);   
+        collection2.set(videos[i].title, videos[i].url);
+       if(!collection.has(videos[i]?.title.split("/").join(" ").split(".").join(" "))) { 
+         console.log(await getAudio(videos[i]));  
+         downloaded.push(videos[i]?.title);
+         console.log(downloaded.length, videos.length, i)
+       }   
+    }
+    console.log(all.length, downloaded.length);
+};
+
+run();
+  
+process.on('uncaughtException', async function (err) {
+   console.log(err)
+});  
