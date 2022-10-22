@@ -14,7 +14,7 @@ music.forEach(async (file) => {
     count++;
     content.push({
       name: `${video?.all[0]?.title}`,
-      track: `/music/${file}`,
+      track: `./music/${file}`,
       id: `${video?.all[0]?.videoId}`,
       trackNumber: count
     });
