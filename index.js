@@ -46,21 +46,21 @@ async function run() {
        }   
     }
     console.log(all.length, downloaded.length);
-};
-
-run();
-
-const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
-
-for(i in music){
-trackNumber++;
+    const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
+    for(i in music){
+      trackNumber++;
         content.push({
             title: i.slice(0, -4),
             track: `./music/${i}`,
             trackNumber
         })
-}
-fs.writeFileSync("./playlist.json", JSON.stringify(content));
+      }
+   fs.writeFileSync("./playlist.json", JSON.stringify(content));
+};
+
+run();
+
+
 
 process.on('uncaughtException', async function (err) {
    console.log(err)
