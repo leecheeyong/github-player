@@ -46,7 +46,6 @@ async function run() {
        }   
     }
     console.log(all.length, downloaded.length);
-    fs.writeFileSync("./playlist.json", JSON.stringify(content));
 };
 
 run();
@@ -61,7 +60,8 @@ trackNumber++;
             trackNumber
         })
 }
-  
+fs.writeFileSync("./playlist.json", JSON.stringify(content));
+
 process.on('uncaughtException', async function (err) {
    console.log(err)
 });  
