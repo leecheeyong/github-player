@@ -15,7 +15,7 @@ music.forEach(async (file) => {
       name: `${video?.all[0]?.title}`,
       track: `/music/${video?.all[0]?.id}`
     });
-    fs.writeFileSync("./playlist.json", content)
+    fs.writeFileSync("./playlist.json", JSON.stringify(content));
     const stats = fs.statSync(`./music/${file}`);
     const fileSizeInBytes = stats.size;
     const size = fileSizeInBytes / (1024*1024);
