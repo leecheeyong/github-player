@@ -1,3 +1,5 @@
+/* HandCoded By Chee Yong Lee */
+/* View License https://github.com/CodingStudios/google-drive-player */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +13,7 @@ body {
 }
 
 #playlist {
-   height: 70vh;
+   height: 68vh;
    max-width: 100vw;
    background-color: rgb(78, 78, 78);
    padding: 4em;
