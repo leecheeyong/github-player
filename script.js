@@ -14,7 +14,7 @@ var currentTrackName = document.getElementById("nowPlaying");
 function playAudio(track, name) {
     audio.src = `${track}`;
     currentTrack = list.find(e=> e.track == track).trackNumber;
-    currentTrackName.textContent = name.slice(0, -4);
+    currentTrackName.textContent = name;
     audio.play();
     control.innerHTML = pauseButton;
     playing = true;
