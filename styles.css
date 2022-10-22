@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background-color:rgb(78, 78, 78);
+}
+
+#playlist {
+   height: 70vh;
+   max-width: 100vw;
+   background-color: rgb(78, 78, 78);
+   padding: 4em;
+   color: white;
+   overflow: auto;
+}
+
+.music {
+    border-bottom: .1em solid rgb(63, 63, 63);
+    padding: .7em;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+}
+
+.control {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+    flex-direction: column;
+}
+
+#nowPlaying {
+    margin-bottom: .2em;
+    font-size: 1em;
+}
+
+.controlPanel {
+    display:flex;
+    flex-direction: row;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.caption {
+    text-align: center;
+    font-size: .6em;
+    color: white;
+    padding-top: .8em;
+    padding-bottom: .5em;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
