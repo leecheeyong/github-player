@@ -33,7 +33,7 @@ async function run() {
         downloaded.push(dir[i].slice(0, -4));
     }      
     await wait(5000);  
-    const data = (await search.getPlaylist("PLqpmULDCxXGfiAH5YWCYdUKxk5JiAUQQn").then(playlist => playlist.fetch()));
+    const data = (await search.getPlaylist("PLqpmULDCxXGdcGHnrsOsUxA01fYIozGyW").then(playlist => playlist.fetch()));
     if(!Array.isArray(data?.videos)) throw new Error("No videos found"); 
      var videos = data.videos;  
      for(i in videos) { 
