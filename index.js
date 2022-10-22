@@ -6,7 +6,7 @@ const { exec } = require('child_process');
 const content = [];
 var count = 0;
 const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
-
+fs.writeFileSync('./hello.txt', 'sup');
 music.forEach(async (file) => {
   try {
     const video = await yts(file.slice(0, -4));
