@@ -26,7 +26,7 @@ fetchPlaylist();
 function fetchPlaylist() {
 fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
     list = list.concat(r.list);
-    r.list.forEach(e => {
+    r.forEach(e => {
         var music = document.createElement("div");
         music.textContent = e.name;
         music.onclick = () => {
