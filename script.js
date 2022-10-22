@@ -13,7 +13,6 @@ var currentTrackName = document.getElementById("nowPlaying");
 
 function playAudio(track, name) {
     audio.src = `${track}`;
-    console.log(decodeURIComponent(track))
     currentTrack = list.find(e=> e.track == track).trackNumber;
     currentTrackName.textContent = name.slice(0, -4);
     audio.play();
