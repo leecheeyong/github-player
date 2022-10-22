@@ -21,12 +21,6 @@ const getAudio = (video) => new Promise((resolve, reject) => {
     .format('mp3') 
     .save(file) 
     .on('end', () => {
-        trackNumber++;
-        content.push({
-            id: video?.videoId,
-            title: video?.title,
-            trackNumber
-        })
         collection.add(`${video?.title}`); 
         resolve(`Done ${video?.title}`);
     })  
@@ -56,6 +50,17 @@ async function run() {
 };
 
 run();
+
+const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
+
+for(i in music){
+trackNumber++;
+        content.push({
+            title: i.slice(0, -4),
+            track: `./music/${i}`,
+            trackNumber
+        })
+}
   
 process.on('uncaughtException', async function (err) {
    console.log(err)
