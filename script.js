@@ -12,7 +12,7 @@ const control = document.getElementById("control");
 var currentTrackName = document.getElementById("nowPlaying");
 
 function playAudio(track, name) {
-    audio.src = `/music/${track}.mp3`;
+    audio.src = `./music/${track}.mp3`;
     currentTrack = track;
     currentTrackName.textContent = name.slice(0, -4);
     audio.play();
@@ -24,7 +24,7 @@ window.onload = () => {
 var playing = false;
 fetchPlaylist();
 function fetchPlaylist() {
-fetch(`/playlist.json`).then(r=>r.json()).then(r=> {
+fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
     list = list.concat(r.list);
     r.list.forEach(e => {
         var music = document.createElement("div");
