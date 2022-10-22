@@ -4,17 +4,19 @@ const yts = require('yt-search');
 const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
 const content = [];
-
+var count = 0;
 const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
 
 music.forEach(async (file) => {
   try {
     const video = await yts(file.slice(0, -4));
     const stream = ytdl(video?.all[0].url, { filter: 'audioonly' });
+    count++;
     content.push({
       name: `${video?.all[0]?.title}`,
-      track: `/music/`,
-      data: video?.all[0]
+      track: `/music/${file}`,
+      id: `${video?.all[0]?.videoId}`,
+      trackNumber: count
     });
     fs.writeFileSync("./playlist.json", JSON.stringify(content));
     const stats = fs.statSync(`./music/${file}`);
