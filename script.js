@@ -9,10 +9,9 @@ var list = [];
 var timestamp = document.getElementById("timestamp");
 const audio = new Audio();
 const control = document.getElementById("control");
-var page = 0;
 var currentTrackName = document.getElementById("nowPlaying");
 
-function playAudio(track) {
+function playAudio(track, name) {
     audio.src = `/music/${track}.mp3`;
     currentTrack = track;
     currentTrackName.textContent = name.slice(0, -4);
@@ -27,7 +26,6 @@ fetchPlaylist();
 function fetchPlaylist() {
 fetch(`/playlist.json`).then(r=>r.json()).then(r=> {
     list = list.concat(r.list);
-    page = r.page;
     r.list.forEach(e => {
         var music = document.createElement("div");
         music.textContent = e.name;
