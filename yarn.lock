@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@discordjs/collection@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@discordjs/collection/-/collection-1.2.0.tgz#5cad4bb47521c6f0abd175bf55c84528d1ac94f7"
+  integrity sha512-VvrrtGb7vbfPHzbhGq9qZB5o8FOB+kfazrxdt0OtxzSkoBuw9dURMkCwWizZ00+rDpiK2HmLHBZX+y6JsG9khw==
+
 "@types/node@*":
   version "18.11.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.3.tgz#78a6d7ec962b596fc2d2ec102c4dd3ef073fea6a"
