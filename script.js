@@ -4,7 +4,7 @@ const playlist = document.getElementById("playlist");
 const slidebar = document.getElementById("slidebar");
 const pauseButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 255);"><path d="M8 7h3v10H8zm5 0h3v10h-3z"></path></svg>';
 const playButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255,255,255,255);"><path d="M7 6v12l10-6z"></path></svg>'
-var currentTrack = 1;
+var currentTrack = 0;
 var list = [];
 var timestamp = document.getElementById("timestamp");
 const audio = new Audio();
@@ -14,7 +14,6 @@ var currentTrackName = document.getElementById("nowPlaying");
 function playAudio(track, name) {
     audio.src = `${track}`;
     currentTrack = list.find(e=> e.track == track).trackNumber;
-    
     currentTrackName.textContent = name.slice(0, -4);
     audio.play();
     control.innerHTML = pauseButton;
