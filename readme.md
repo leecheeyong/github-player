@@ -1,5 +1,5 @@
 # Github Player
-Music player hosted on Github Pages, powered by Github Actions.
+Music player hosted on Github Pages, powered by Github Actions. Web player that serves mp3 files.
 
 ## How it works ?
 - [index.js](/index.js) - Fetches data from a YouTube playlist
@@ -8,7 +8,9 @@ Music player hosted on Github Pages, powered by Github Actions.
 - Github pages will then deploy everything and serve [index.html](/index.html) - the player and the assets
 
 ## About
-This project is mainly an improved version of [codingstudios](https://github.com/codingstudios/yt-player) by the same author. 
+This project is mainly an improved version of [codingstudios](https://github.com/codingstudios/yt-player) by the same author [@leecheeyong](https://github.com/leecheeyong). 
 This project offers better user experience, bug fixes, more features, more reliable and user friendly. It still uses the original design despite that
 many things were changed.
 
+## License 
+This project is available as open source under the terms of the [AGPL-3.0 License](/LICENSE)
