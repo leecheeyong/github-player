@@ -18,6 +18,7 @@ function playAudio(track, name) {
     currentTrack = list.find(e=> decodeURIComponent(e.track) == track && decodeURIComponent(e.title) == name).trackNumber - 1;
     currentTrackName.textContent = name;
     audio.play();
+    if ("mediaSession" in navigator) { navigator.mediaSession.metadata = new MediaMetadata({ title: `${name}` }); }
     navigator.mediaSession.playbackState = 'playing';
     control.innerHTML = pauseButton;
     playing = true;
