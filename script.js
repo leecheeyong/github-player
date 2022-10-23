@@ -12,7 +12,7 @@ const control = document.getElementById("control");
 var currentTrackName = document.getElementById("nowPlaying");
 
 function playAudio(track, name) {
-    audio.src = `${track}`;
+    audio.src = `${decodeURIComponent(track)}`;
     currentTrack = list.find(e=> decodeURIComponent(e.track) == decodeURIComponent(track) && decodeURIComponent(e.title) == decodeURIComponent(name)).trackNumber;
     currentTrackName.textContent = name;
     audio.play();
