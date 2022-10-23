@@ -14,7 +14,7 @@ var currentTrackName = document.getElementById("nowPlaying");
 function playAudio(track, name) {
     audio.src = `${decodeURIComponent(track)}`;
     currentTrack = list.find(e=> decodeURIComponent(e.track) == decodeURIComponent(track) && decodeURIComponent(e.title) == decodeURIComponent(name)).trackNumber;
-    currentTrackName.textContent = name;
+    currentTrackName.textContent = decodeURIComponent(name);
     audio.play();
     control.innerHTML = pauseButton;
     playing = true;
