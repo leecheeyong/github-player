@@ -13,7 +13,6 @@ body {
 }
 
 #playlist {
-   max-width: 100vw;
    background-color: rgb(78, 78, 78);
    padding: 4em;
    padding-bottom: 10em;
