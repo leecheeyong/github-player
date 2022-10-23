@@ -1,5 +1,5 @@
 // handcoded by Chee Yong Lee
-// view license https://github.com/CodingStudios/google-drive-player
+// view license https://github.com/leecheeyong/github-player
 const playlist = document.getElementById("playlist");
 const slidebar = document.getElementById("slidebar");
 const pauseButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 255);"><path d="M8 7h3v10H8zm5 0h3v10h-3z"></path></svg>';
