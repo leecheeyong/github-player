@@ -11,10 +11,10 @@ const audio = new Audio();
 const control = document.getElementById("control");
 var currentTrackName = document.getElementById("nowPlaying");
 
-function playAudio(track, name) {
-    audio.src = `${decodeURIComponent(track)}`;
-    currentTrack = list.find(e=> decodeURIComponent(e.track) == decodeURIComponent(track) && decodeURIComponent(e.title) == decodeURIComponent(name)).trackNumber;
-    currentTrackName.textContent = decodeURIComponent(name);
+function playAudio(track = decodeURIComponent(track), name = decodeURIComponent(name)) {
+    audio.src = `${track}`;
+    currentTrack = list.find(e=> decodeURIComponent(e.track) == track && decodeURIComponent(e.title) == name).trackNumber;
+    currentTrackName.textContent = name;
     audio.play();
     control.innerHTML = pauseButton;
     playing = true;
