@@ -58,21 +58,21 @@ control.addEventListener("click", () => {
 
 audio.addEventListener("ended", () => {
     if(currentTrack == list.length) return;
-    playAudio(list[currentTrack + 1].track, list[currentTrack].title);
+    playAudio(list[currentTrack + 1].track, list[currentTrack + 1].title);
 })
 
 document.getElementById("previous").addEventListener("click", () => {
     if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].title);
+    if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
     if(currentTrack == 1) return;
-    playAudio(list[currentTrack - 1].track, list[currentTrack - 2].title);
+    playAudio(list[currentTrack - 1].track, list[currentTrack - 1].title);
 });
 
 document.getElementById("next").addEventListener("click", () => {
     if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(1, list[0].title);
+    if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
     if(currentTrack == list.length) return;
-    playAudio(list[currentTrack + 1].track, list[currentTrack].title);
+    playAudio(list[currentTrack + 1].track, list[currentTrack + 1].title);
 });
 
 audio.ontimeupdate = function () {
