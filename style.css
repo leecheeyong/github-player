@@ -13,10 +13,10 @@ body {
 }
 
 #playlist {
-   max-height: 65vh;
    max-width: 100vw;
    background-color: rgb(78, 78, 78);
    padding: 4em;
+   padding-bottom: 10em;
    color: white;
    overflow: auto;
 }
@@ -30,7 +30,11 @@ body {
 }
 
 .control {
-    min-height: 10vh;
+    position: fixed;
+    width: 100%;
+    background-color: rgb(78,78,78);
+    height: 15vh;
+    bottom: 0;
     color: white;
     display: flex;
     justify-content: center;
