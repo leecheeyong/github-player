@@ -18,9 +18,11 @@ function playAudio(track, name) {
     currentTrack = list.find(e=> decodeURIComponent(e.track) == track && decodeURIComponent(e.title) == name).trackNumber - 1;
     currentTrackName.textContent = name;
     document.title = `${name} | Github Music`;
-    audio.play();
-    if ("mediaSession" in navigator) { navigator.mediaSession.metadata = new MediaMetadata({ title: `${name}` }); }
+    audio.play().then(() => {
+    navigator.mediaSession.metadata = new MediaMetadata({ title: `${name}` });
     navigator.mediaSession.playbackState = 'playing';
+    updatePositionState();
+    })
     control.innerHTML = pauseButton;
     playing = true;
 }
@@ -103,7 +105,6 @@ function updatePositionState() {
   }
 }
 audio.ontimeupdate = function () {
-    updatePositionState();
     timestamp.textContent = timeFormat(audio.currentTime);
     slidebar.value = audio.currentTime / audio.duration * 100;
 }
