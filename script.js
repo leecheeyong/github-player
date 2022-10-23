@@ -13,7 +13,7 @@ var currentTrackName = document.getElementById("nowPlaying");
 
 function playAudio(track, name) {
     audio.src = `${track}`;
-    currentTrack = list.find(e=> decodeURIComponent(e.track) == track).trackNumber;
+    currentTrack = list.find(e=> decodeURIComponent(e.track) == decodeURIComponent(track) && decodeURIComponent(e.title) == decodeURIComponent(name)).trackNumber;
     currentTrackName.textContent = name;
     audio.play();
     control.innerHTML = pauseButton;
@@ -30,7 +30,7 @@ fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
         var music = document.createElement("div");
         music.textContent = decodeURIComponent(e.title);
         music.onclick = () => {
-            playAudio(decodeURIComponent(e.track), decodeURIComponent(e.title));
+            playAudio(e.track, e.title);
         }     
         music.classList.add("music");
        playlist.appendChild(music);
