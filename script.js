@@ -44,8 +44,8 @@ fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
         fetchPlaylist();
     }
 }*/
-control.addEventListener("click", () => {
-    if(!list) return;
+function playPause() {
+if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
     if (!playing) {
         playing = true;
@@ -56,7 +56,12 @@ control.addEventListener("click", () => {
         audio.pause();
         control.innerHTML = playButton;
     }
-})
+}
+control.addEventListener("click", () => playPause());
+/* https://web.dev/media-session/ */
+
+navigator.mediaSession.setActionHandler('play', () => playPause());
+navigator.mediaSession.setActionHandler('pause', () => playPause());
 
 audio.addEventListener("ended", () => {
     if(currentTrack == list.length) return;
@@ -85,6 +90,7 @@ audio.ontimeupdate = function () {
 slidebar.oninput = (e) => {
   audio.currentTime = audio.duration / 100 * slidebar.value, audio.duration;
 }
+
 
 function timeFormat(ct) {
     minutes = Math.floor(ct / 60);
