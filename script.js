@@ -98,6 +98,7 @@ function updatePositionState() {
     navigator.mediaSession.setPositionState({
       duration: audio.duration,
       position: audio.currentTime,
+      playbackRate: audio.playbackRate 
     });
   }
 }
