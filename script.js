@@ -90,10 +90,19 @@ function playNext() {
     
 document.getElementById("next").addEventListener("click", () => playNext());
 navigator.mediaSession.setActionHandler('nexttrack', () => playNext());
-    
+ 
+function updatePositionState() {
+  if ('setPositionState' in navigator.mediaSession) {
+    navigator.mediaSession.setPositionState({
+      duration: audio.duration,
+      position: audio.currentTime,
+    });
+  }
+}
 audio.ontimeupdate = function () {
+    updatePositionState();
     timestamp.textContent = timeFormat(audio.currentTime);
-   slidebar.value = audio.currentTime / audio.duration * 100;
+    slidebar.value = audio.currentTime / audio.duration * 100;
 }
 
 slidebar.oninput = (e) => {
