@@ -17,6 +17,7 @@ function playAudio(track, name) {
     audio.src = `${track}`;
     currentTrack = list.find(e=> decodeURIComponent(e.track) == track && decodeURIComponent(e.title) == name).trackNumber - 1;
     currentTrackName.textContent = name;
+    document.title = `${name} | Github Music`;
     audio.play();
     if ("mediaSession" in navigator) { navigator.mediaSession.metadata = new MediaMetadata({ title: `${name}` }); }
     navigator.mediaSession.playbackState = 'playing';
