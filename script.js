@@ -18,6 +18,7 @@ function playAudio(track, name) {
     currentTrack = list.find(e=> decodeURIComponent(e.track) == track && decodeURIComponent(e.title) == name).trackNumber - 1;
     currentTrackName.textContent = name;
     audio.play();
+    navigator.mediaSession.playbackState = 'playing';
     control.innerHTML = pauseButton;
     playing = true;
 }
@@ -50,10 +51,12 @@ if(!list) return;
     if (!playing) {
         playing = true;
         audio.play();
+        navigator.mediaSession.playbackState = 'playing';
         control.innerHTML = pauseButton;
     } else {
         playing = false;
         audio.pause();
+        navigator.mediaSession.playbackState = 'paused';
         control.innerHTML = playButton;
     }
 }
@@ -67,21 +70,27 @@ audio.addEventListener("ended", () => {
     if(currentTrack == list.length) return;
     playAudio(list[currentTrack + 1].track, list[currentTrack + 1].title);
 })
-
-document.getElementById("previous").addEventListener("click", () => {
-    if(!list) return;
+    
+function playPrevious() {
+ if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
     if(currentTrack == 1) return;
     playAudio(list[currentTrack - 1].track, list[currentTrack - 1].title);
-});
+}
 
-document.getElementById("next").addEventListener("click", () => {
-    if(!list) return;
-    if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
-    if(currentTrack == list.length) return;
-    playAudio(list[currentTrack + 1].track, list[currentTrack + 1].title);
-});
+document.getElementById("previous").addEventListener("click", () => playPrevious());
+navigator.mediaSession.setActionHandler('previoustrack', () => playPrevious());
 
+function playNext() {
+  if(!list) return;
+  if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
+  if(currentTrack == list.length) return;
+  playAudio(list[currentTrack + 1].track, list[currentTrack + 1].title);
+}
+    
+document.getElementById("next").addEventListener("click", () => playNext());
+navigator.mediaSession.setActionHandler('nexttrack', () => playNext());
+    
 audio.ontimeupdate = function () {
     timestamp.textContent = timeFormat(audio.currentTime);
    slidebar.value = audio.currentTime / audio.duration * 100;
