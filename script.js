@@ -29,7 +29,7 @@ function playAudio(track, name) {
     currentTrackName.textContent = name;
     document.title = `${name} | Github Music`;
     audio.play().then(() => {
-    navigator.mediaSession.metadata = new MediaMetadata({ title: `${name}` });
+    navigator.mediaSession.metadata = new MediaMetadata({ title: `${name}`, artist: 'Github Player' });
     navigator.mediaSession.playbackState = 'playing';
     updatePositionState();
     })
