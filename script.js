@@ -56,11 +56,11 @@ fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
     page++;
 });
 }
-playlist.onscroll = () => {
-    if(playlist.scrollTop + playlist.clientHeight >= playlist.scrollHeight) {
+playlist.addEventListener('scroll', (event) => {
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         fetchPlaylist();
     }
-}
+});
 function playPause() {
 if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
