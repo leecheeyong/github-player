@@ -54,6 +54,9 @@ async function run() {
             trackNumber
         })
       }
+    for (let i = 0; i < content.length; i += 20) {
+            console.log(content.slice(i, i + 20));
+     }
    fs.writeFileSync("./playlist.json", JSON.stringify(content));
 };
 
