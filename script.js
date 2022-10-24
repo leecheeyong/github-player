@@ -43,8 +43,8 @@ var playing = false;
 fetchPlaylist();
 function fetchPlaylist() {
 fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
-    list = r;
-    r.forEach(e => {
+    list = list.concat(r.list);
+    r.list.forEach(e => {
         var music = document.createElement("div");
         music.textContent = decodeURIComponent(e.title);
         music.onclick = () => {
