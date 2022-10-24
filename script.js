@@ -6,6 +6,7 @@ const pauseButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="
 const playButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255,255,255,255);"><path d="M7 6v12l10-6z"></path></svg>'
 var currentTrack = 0;
 var list = [];
+var page = 0;
 var timestamp = document.getElementById("timestamp");
 const audio = new Audio();
 const control = document.getElementById("control");
@@ -41,7 +42,7 @@ window.onload = () => {
 var playing = false;
 fetchPlaylist();
 function fetchPlaylist() {
-fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
+fetch(`./playlist-${page}.json`).then(r=>r.json()).then(r=> {
     list = r;
     r.forEach(e => {
         var music = document.createElement("div");
@@ -53,12 +54,13 @@ fetch(`./playlist.json`).then(r=>r.json()).then(r=> {
        playlist.appendChild(music);
     })
 });
+  page++;
 }
-/*playlist.onscroll = () => {
+playlist.onscroll = () => {
     if(playlist.scrollTop + playlist.clientHeight >= playlist.scrollHeight) {
         fetchPlaylist();
     }
-}*/
+}
 function playPause() {
 if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
