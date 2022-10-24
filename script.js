@@ -56,7 +56,7 @@ fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
     page++;
 });
 }
-playlist.addEventListener('scroll', (event) => {
+document.addEventListener('scroll', (event) => {
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         fetchPlaylist();
     }
