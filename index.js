@@ -57,12 +57,15 @@ async function run() {
       }
     for (let i = 0; i < content.length; i += 20) {
          playlist.push(content.slice(i, i + 20));
-        fs.writeFileSync(`./playlist-${i}.json`, JSON.stringify({
+    }
+    
+    playlist.forEach((e, i) => {
+          fs.writeFileSync(`./playlist/playlist-${i}.json`, JSON.stringify({
             page: i,
-            list: content,
-            totalPages: (content.length / 20).toFixed(0)
+            list: e,
+            totalPages: playlist.length
         }));
-     }
+    })
 };
 
 run();
