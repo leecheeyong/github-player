@@ -42,7 +42,7 @@ window.onload = () => {
 var playing = false;
 fetchPlaylist();
 function fetchPlaylist() {
-fetch(`./playlist-${page}.json`).then(r=>r.json()).then(r=> {
+fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
     list = r;
     r.forEach(e => {
         var music = document.createElement("div");
