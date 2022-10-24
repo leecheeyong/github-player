@@ -12,6 +12,12 @@ This project is mainly an improved version of [codingstudios' yt-player](https:/
 
 This project offers better user experience, bug fixes, higher quality audio, more features, more reliable, user friendly and well optimized for browsers. It still uses the original design despite that many things were changed. 
 
+## Getting Started
+1. Fork this repository
+2. You can choose to delete all the existing .mp3 files in [/music](/music) by running a script 
+3. Goto [index.js](/indde.js) & change the value of `PLAYLIST_ID`
+4. **"Run"** the github action
+
 ## Like this project ?
 Feel free to give this project a star and also give a follow to the contributors. If you're planning to use any code from this project, please do give
 credit to this repository & the author.
