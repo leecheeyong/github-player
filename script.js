@@ -41,8 +41,8 @@ function playAudio(track, name) {
 window.onload = () => {
 var playing = false;
 fetchPlaylist();
-function fetchPlaylist() {
 fetch(`./playlist/playlist.json`).then(r=>r.json()).then(r=> { list = r });
+function fetchPlaylist() {
 fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
     r.list.forEach(e => {
         var music = document.createElement("div");
