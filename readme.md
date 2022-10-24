@@ -9,6 +9,7 @@ Music player hosted on Github Pages, powered by Github Actions. Web player that 
 
 ## About
 This project is mainly an improved version of [codingstudios](https://github.com/codingstudios/yt-player) by the same author [@leecheeyong](https://github.com/leecheeyong). 
+
 This project offers better user experience, bug fixes, higher quality audio, more features, more reliable, user friendly and well optimized for browsers. It still uses the original design despite that many things were changed. 
 
 ## Like this project ?
