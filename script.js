@@ -53,8 +53,8 @@ fetch(`./playlist-${page}.json`).then(r=>r.json()).then(r=> {
         music.classList.add("music");
        playlist.appendChild(music);
     })
+    page++;
 });
-  page++;
 }
 playlist.onscroll = () => {
     if(playlist.scrollTop + playlist.clientHeight >= playlist.scrollHeight) {
