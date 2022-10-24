@@ -9,6 +9,7 @@ const path = require('path');
 const downloaded = [];
 const cannot = [ ];
 const content = [];
+const playlist = [];
 
 const all = [];
 var trackNumber = 0;
@@ -55,9 +56,13 @@ async function run() {
         })
       }
     for (let i = 0; i < content.length; i += 20) {
-            console.log(content.slice(i, i + 20));
+         playlist.push(content.slice(i, i + 20));
+        fs.writeFileSync(`./playlist-${i}.json`, JSON.stringify({
+            page: i,
+            list: content,
+            totalPages: (content.length / 20).toFixed(0)
+        }));
      }
-   fs.writeFileSync("./playlist.json", JSON.stringify(content));
 };
 
 run();
