@@ -57,7 +57,7 @@ fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
 });
 }
 document.addEventListener('scroll', (event) => {
-    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    if((window.innerHeight + window.scrollY + 1) >= document.body.offsetHeight) {
         fetchPlaylist();
     }
 });
