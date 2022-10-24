@@ -1,3 +1,4 @@
+const PLAYLIST_ID = "PLqpN-gSREHXz5NFlV30OkMkR_MIPAKC6F";
 const ffmpeg = require('fluent-ffmpeg');
 const ytdl = require('ytdl-core');
 const search = require("youtube-sr").default;
@@ -33,7 +34,7 @@ async function run() {
         downloaded.push(dir[i].slice(0, -4));
     }      
     await wait(5000);  
-    const data = (await search.getPlaylist("PLqpN-gSREHXz5NFlV30OkMkR_MIPAKC6F").then(playlist => playlist.fetch()));
+    const data = (await search.getPlaylist(PLAYLIST_ID).then(playlist => playlist.fetch()));
     if(!Array.isArray(data?.videos)) throw new Error("No videos found"); 
      var videos = data.videos;  
      for(i in videos) { 
@@ -65,7 +66,7 @@ async function run() {
             totalPages: playlist.length
         }));
     })
-    fs.writeFileSync(`./playlist/playlist.json`, JSON.stringify(content);
+    fs.writeFileSync(`./playlist/playlist.json`, JSON.stringify(content));
 };
 
 run();
