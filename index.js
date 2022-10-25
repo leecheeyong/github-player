@@ -76,9 +76,10 @@ async function run() {
     if (i == 0) return bytes + ' ' + sizes[i];
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
     };
-    getSize('./music', (err, size) => {
-      fs.writeFileSync(`./stats.md`, `# Github Player Stats\n\n## Total Audio: ${music.length}\n\n## Total Size Of Audio: ${bts(size)}\n\n## Playlist Index File Size: ${bts(statsPlaylist.size)}`);
-    })
+    getSize('./music', (err, size) => 
+      fs.writeFileSync(`./stats.md`, 
+ `# Github Player Stats\n\n## Total Audio: ${music.length}\n\n## Total Size Of Audio: ${bts(size)}\n\n## Playlist Index File Size: ${bts(statsPlaylist.size)}`
+    ));
 };
 
 run();
