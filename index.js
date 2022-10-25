@@ -69,14 +69,22 @@ async function run() {
     })
     fs.writeFileSync(`./playlist/playlist.json`, JSON.stringify(content));
     const statsPlaylist = fs.statSync("./playlist/playlist.json");
-    const playlistMB = statsPlaylist.size / (1024*1024);
+    function bts(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    if (i == 0) return bytes + ' ' + sizes[i];
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+    };
     getSize('./music', (err, size) => {
         fs.writeFileSync(`./stats.md`, `
         # Github Player Stats
         
         ## Total Audio: ${music.length}
-        ## Total Size Of Audio: ${(size / 1024 / 1024).toFixed(2) + ' MB'}
-        ## Playlist Index File Size: ${playlistMB}
+        
+        ## Total Size Of Audio: ${bts(size)}
+        
+        ## Playlist Index File Size: ${bts(statsPlaylist.size)}
         `);
     })
 };
