@@ -6,6 +6,7 @@ Music player hosted on Github Pages, powered by Github Actions. Web player that 
 - Then, it'll download them one by one and save those audio to [/music](/music) directory in the repository
 - It'll also create a list that helps user to search for their music [playlist.json](/playlist)
 - Github pages will then deploy everything and serve [index.html](/index.html) - the player and the assets
+- Check out [stats.md](./stats.md) for all the useful stats
 
 ## About
 This project is mainly an improved version of [codingstudios' yt-player](https://github.com/codingstudios/yt-player) by the same author [@leecheeyong](https://github.com/leecheeyong). 
