@@ -80,7 +80,7 @@ async function run() {
     };
     getSize('./music', (err, size) => 
       fs.writeFileSync(`./stats.md`, 
- `## Github Player Stats\n\n### Total Audio: ${music.length}\n\n### Total Size Of Audio: ${bts(size)}\n\n### Playlist Index File Size: ${bts(statsPlaylist.size)}`
+ `## Github Player Stats\n\n#### Total Audio: ${music.length}\n\n#### Total Size Of Audio: ${bts(size)}\n\n#### Playlist Index File Size: ${bts(statsPlaylist.size)}`
     ));
 };
 
