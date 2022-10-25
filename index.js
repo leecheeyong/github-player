@@ -1,5 +1,6 @@
 const PLAYLIST_ID = "PLqpN-gSREHXwYRIsjw8Qmh0QjJH_7ZwxK";
 const ffmpeg = require('fluent-ffmpeg');
+const getSize = require('get-folder-size');
 const ytdl = require('ytdl-core');
 const search = require("youtube-sr").default;
 const fs = require('fs');
@@ -67,6 +68,17 @@ async function run() {
         }));
     })
     fs.writeFileSync(`./playlist/playlist.json`, JSON.stringify(content));
+    const statsPlaylist = fs.statSync("./playlist/playlist.json");
+    const playlistMB = statsPlaylist.size / (1024*1024);
+    getSize('./music', (err, size) => {
+        fs.writeFileSync(`./stats.md`, `
+        # Github Player Stats
+        
+        ## Total Audio: ${music.length}
+        ## Total Size Of Audio: ${(size / 1024 / 1024).toFixed(2) + ' MB'}
+        ## Playlist Index File Size: ${playlistMB}
+        `);
+    })
 };
 
 run();
