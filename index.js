@@ -42,9 +42,11 @@ async function run() {
         all.push(videos[i].title);   
         collection2.set(videos[i].title, videos[i].url);
        if(!collection.has(videos[i]?.title.split("/").join(" ").split(".").join(" "))) { 
+        try {
          console.log(await getAudio(videos[i]));  
          downloaded.push(videos[i]?.title);
          console.log(downloaded.length, videos.length, i)
+        }catch(e) {console.log(e)}
        }   
     }
     console.log(all.length, downloaded.length);
@@ -78,7 +80,7 @@ async function run() {
     };
     getSize('./music', (err, size) => 
       fs.writeFileSync(`./stats.md`, 
- `# Github Player Stats\n\n## Total Audio: ${music.length}\n\n## Total Size Of Audio: ${bts(size)}\n\n## Playlist Index File Size: ${bts(statsPlaylist.size)}`
+ `## Github Player Stats\n\n### Total Audio: ${music.length}\n\n### Total Size Of Audio: ${bts(size)}\n\n### Playlist Index File Size: ${bts(statsPlaylist.size)}`
     ));
 };
 
