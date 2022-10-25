@@ -12,6 +12,7 @@ const downloaded = [];
 const cannot = [ ];
 const content = [];
 const playlist = [];
+const thisDownload = [];
 
 const all = [];
 var trackNumber = 0;
@@ -45,6 +46,7 @@ async function run() {
         try {
          console.log(await getAudio(videos[i]));  
          downloaded.push(videos[i]?.title);
+         thisDownload.push(video[i]?.title);
          console.log(downloaded.length, videos.length, i)
         }catch(e) {console.log(e)}
        }   
@@ -80,7 +82,7 @@ async function run() {
     };
     getSize('./music', (err, size) => 
       fs.writeFileSync(`./stats.md`, 
- `## Github Player Stats\n\n#### Total Audio: ${music.length}\n\n#### Total Size Of Audio: ${bts(size)}\n\n#### Playlist Index File Size: ${bts(statsPlaylist.size)}`
+ `## Github Player Stats\n\n#### **Total Audio**: ${music.length}\n\n#### **Total Size Of Audio**: ${bts(size)}\n\n#### **Playlist Index File Size**: ${bts(statsPlaylist.size)}\n\n#### **Current Download**: ${thisDownload.length}`
     ));
 };
 
