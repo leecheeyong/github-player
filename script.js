@@ -2,6 +2,7 @@
 // view license https://github.com/leecheeyong/github-player
 const playlist = document.getElementById("playlist");
 const slidebar = document.getElementById("slidebar");
+const searchBar = document.getElementById("search");
 const pauseButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 255);"><path d="M8 7h3v10H8zm5 0h3v10h-3z"></path></svg>';
 const playButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255,255,255,255);"><path d="M7 6v12l10-6z"></path></svg>'
 var currentTrack = 0;
@@ -13,6 +14,17 @@ const audio = new Audio();
 const control = document.getElementById("control");
 var currentTrackName = document.getElementById("nowPlaying");
 
+function debounce(cb, delay = 1000) {
+  let timeout
+
+  return (...args) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      cb(...args)
+    }, delay)
+  }
+}
+
 function updatePositionState() {
   if ('setPositionState' in navigator.mediaSession) {
     navigator.mediaSession.setPositionState({
@@ -20,6 +32,33 @@ function updatePositionState() {
       position: audio.currentTime,
       playbackRate: audio.playbackRate 
     });
+  }
+}
+
+function search(name) {
+  if(!name) {
+    loaded.forEach(e => {
+        var music = document.createElement("div");
+        music.textContent = decodeURIComponent(e.title);
+        music.onclick = () => playAudio(e.track, e.title);
+        music.classList.add("music");
+       playlist.appendChild(music);
+    })
+  }else {
+  playlist.replaceChildren();
+  const result = list.filter(e=>decodeURIComponent(e.title).toLowerCase().split(" ").join("").includes(`${name}`.toLowerCase().split(" ").join("")));
+  if(result.length == 0) {
+     var music = document.createElement("div");
+     music.textContent = "No Result"; music.classList.add("music"); playlist.appendChild(music);
+  }else {
+  result.forEach(e => {
+        var music = document.createElement("div");
+        music.textContent = decodeURIComponent(e.title);
+        music.onclick = () => playAudio(e.track, e.title);
+        music.classList.add("music");
+       playlist.appendChild(music);
+    })
+  }
   }
 }
 
@@ -108,6 +147,8 @@ function playNext() {
     
 document.getElementById("next").addEventListener("click", () => playNext());
 navigator.mediaSession.setActionHandler('nexttrack', () => playNext());
+search.addEventListener("onkeydown", () => debounce(() => search(searchBar.value)));
+
  
 audio.ontimeupdate = function () {
     timestamp.textContent = timeFormat(audio.currentTime);
