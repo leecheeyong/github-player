@@ -6,7 +6,7 @@ const searchBar = document.getElementById("search");
 const pauseButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 255);"><path d="M8 7h3v10H8zm5 0h3v10h-3z"></path></svg>';
 const playButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255,255,255,255);"><path d="M7 6v12l10-6z"></path></svg>'
 var currentTrack = 0;
-const list = [];
+var list = [];
 var loaded = [];
 var page = 0;
 var timestamp = document.getElementById("timestamp");
@@ -61,7 +61,7 @@ function search(name) {
   }
   }
 }
-
+searchBar.onkeydown = () => search(searchBar.value);
 function playAudio(track, name) {
     name = decodeURIComponent(name);
     track = decodeURIComponent(track);
@@ -147,8 +147,6 @@ function playNext() {
     
 document.getElementById("next").addEventListener("click", () => playNext());
 navigator.mediaSession.setActionHandler('nexttrack', () => playNext());
-search.addEventListener("onkeydown", () => debounce(() => search(searchBar.value)));
-
  
 audio.ontimeupdate = function () {
     timestamp.textContent = timeFormat(audio.currentTime);
