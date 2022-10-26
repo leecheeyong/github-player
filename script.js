@@ -5,7 +5,8 @@ const slidebar = document.getElementById("slidebar");
 const pauseButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 255);"><path d="M8 7h3v10H8zm5 0h3v10h-3z"></path></svg>';
 const playButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255,255,255,255);"><path d="M7 6v12l10-6z"></path></svg>'
 var currentTrack = 0;
-var list = [];
+const list = [];
+var loaded = [];
 var page = 0;
 var timestamp = document.getElementById("timestamp");
 const audio = new Audio();
@@ -54,6 +55,7 @@ fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
        playlist.appendChild(music);
     })
     page++;
+    loaded = loaded.concat(r.list);
 });
 }
 document.addEventListener('scroll', (event) => {
