@@ -1,13 +1,13 @@
 ## Github Player Stats
 
-#### **Total Audio**: 534
+#### **Total Audio**: 535
 
 #### **Total Size Of Audio**: 1.8 GB
 
-#### **Playlist Index File Size**: 335.7 KB
+#### **Playlist Index File Size**: 335.8 KB
 
-#### **Current Download**: 0
+#### **Current Download**: 1
 
-#### **Download Total Time**: 0:00 minutes
+#### **Download Total Time**: 0:06 minutes
 
-#### **Total Job Time**: 0:05 minutes
+#### **Total Job Time**: 0:11 minutes
