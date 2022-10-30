@@ -8,6 +8,7 @@ const playButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 var currentTrack = 0;
 var list = [];
 var loaded = [];
+var loadPlaylist = true;
 var page = 0;
 var timestamp = document.getElementById("timestamp");
 const audio = new Audio();
@@ -37,6 +38,7 @@ function updatePositionState() {
 
 function search(name) {
   if(!name) {
+    loadPlaylist = true;
     loaded.forEach(e => {
         var music = document.createElement("div");
         music.textContent = decodeURIComponent(e.title);
@@ -45,6 +47,7 @@ function search(name) {
        playlist.appendChild(music);
     })
   }else {
+  loadPlaylist = false;
   playlist.replaceChildren();
   const result = list.filter(e=>decodeURIComponent(e.title).toLowerCase().split(" ").join("").includes(`${name}`.toLowerCase().split(" ").join("")));
   if(result.length == 0) {
@@ -98,6 +101,7 @@ fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
 });
 }
 document.addEventListener('scroll', (event) => {
+  if(!loadPlaylist)return;
     if((window.innerHeight + window.scrollY + 1) >= document.body.offsetHeight) {
         fetchPlaylist();
     }
