@@ -88,7 +88,7 @@ async function run() {
     var jobEndTime = performance.now();
     getSize('./music', (err, size) => 
       fs.writeFileSync(`./stats.md`, 
- `## Github Player Stats\n\n#### **Total Audio**: ${music.length}\n\n#### **Total Size Of Audio**: ${bts(size)}\n\n#### **Playlist Index File Size**: ${bts(statsPlaylist.size)}\n\n#### **Current Download**: ${thisDownload.length}\n\n#### **Download Total Time**: ${msTmin(endDownloadTime - startDownloadTime)} minutes\n\n#### **Total Job Time**: ${msTmin(jobEndTime - jobStartTime)} minutes`
+ `## Github Player Stats\n\n#### **Total audio files**: ${music.length}\n\n#### **Total size of audio files**: ${bts(size)}\n\n#### **Playlist index file size**: ${bts(statsPlaylist.size)}\n\n#### **Current download**: ${thisDownload.length}\n\n#### **Download time consumed**: ${msTmin(endDownloadTime - startDownloadTime)} minutes\n\n#### **Total job time consumed**: ${msTmin(jobEndTime - jobStartTime)} minutes`
     ));
 };
 
