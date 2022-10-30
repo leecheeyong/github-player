@@ -6,8 +6,8 @@
 
 #### **Playlist Index File Size**: 335.7 KB
 
-#### **Current Download**: 2
+#### **Current Download**: 0
 
-#### **Download Total Time**: 0:16 minutes
+#### **Download Total Time**: 0:00 minutes
 
-#### **Total Job Time**: 0:22 minutes
+#### **Total Job Time**: 0:05 minutes
