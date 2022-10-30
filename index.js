@@ -1,4 +1,4 @@
-const PLAYLIST_ID = "";
+const PLAYLIST_ID = "PLEzgMU4i1yiNg0fAKC8lIKyynTAm_oNcR";
 const ffmpeg = require('fluent-ffmpeg');
 const getSize = require('get-folder-size');
 const ytdl = require('ytdl-core');
@@ -32,7 +32,7 @@ const getAudio = (video) => new Promise((resolve, reject) => {
 async function run() {
     const dir = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     for (i in dir) {
-        fs.unlinkSync(`./music/${dir[i]}`);
+      //  fs.unlinkSync(`./music/${dir[i]}`);
         collection.add(dir[i].slice(0, -4));
         downloaded.push(dir[i].slice(0, -4));
     }      
