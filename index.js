@@ -1,4 +1,4 @@
-const PLAYLIST_ID = "PLEzgMU4i1yiNg0fAKC8lIKyynTAm_oNcR";
+const PLAYLIST_ID = "PLEzgMU4i1yiPyn50OpKrmbZ3lZqPe4UHA";
 const ffmpeg = require('fluent-ffmpeg');
 const getSize = require('get-folder-size');
 const ytdl = require('ytdl-core');
@@ -47,7 +47,7 @@ async function run() {
         try {
          console.log(await getAudio(videos[i]));  
          downloaded.push(videos[i]?.title);
-         thisDownload.push(video[i]?.title);
+         thisDownload.push(videos[i]?.title);
          console.log(downloaded.length, videos.length, i)
         }catch(e) {console.log(e)}
        }   
