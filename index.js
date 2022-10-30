@@ -1,6 +1,7 @@
 const PLAYLIST_ID = "PLqpN-gSREHXx_4BsaAYYbKObFg4XjrmnG";
 const ffmpeg = require('fluent-ffmpeg');
 const getSize = require('get-folder-size');
+const { performance } = require('perf_hooks');
 const ytdl = require('ytdl-core');
 const search = require("youtube-sr").default;
 const fs = require('fs');
@@ -30,6 +31,7 @@ const getAudio = (video) => new Promise((resolve, reject) => {
 });        
 
 async function run() {
+    var jobStartTime = performance.now();
     const dir = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     for (i in dir) {
       //  fs.unlinkSync(`./music/${dir[i]}`);
@@ -40,6 +42,7 @@ async function run() {
     const data = (await search.getPlaylist(PLAYLIST_ID).then(playlist => playlist.fetch()));
     if(!Array.isArray(data?.videos)) throw new Error("No videos found"); 
      var videos = data.videos;  
+    var startDownloadTime = performance.now();
      for(i in videos) { 
         all.push(videos[i].title);   
         collection2.set(videos[i].title, videos[i].url);
@@ -52,6 +55,7 @@ async function run() {
         }catch(e) {console.log(e)}
        }   
     }
+    var endDownloadTime = performance.now();
     console.log(all.length, downloaded.length);
     const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     for(i in music){
@@ -81,14 +85,21 @@ async function run() {
     if (i == 0) return bytes + ' ' + sizes[i];
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
     };
+    var jobEndTime = performance.now();
     getSize('./music', (err, size) => 
       fs.writeFileSync(`./stats.md`, 
- `## Github Player Stats\n\n#### **Total Audio**: ${music.length}\n\n#### **Total Size Of Audio**: ${bts(size)}\n\n#### **Playlist Index File Size**: ${bts(statsPlaylist.size)}\n\n#### **Current Download**: ${thisDownload.length}`
+ `## Github Player Stats\n\n#### **Total Audio**: ${music.length}\n\n#### **Total Size Of Audio**: ${bts(size)}\n\n#### **Playlist Index File Size**: ${bts(statsPlaylist.size)}\n\n#### **Current Download**: ${thisDownload.length}\n\n#### **Download Total Time**: ${msTmin(endDownloadTime - startDownloadTime)} minutes\n\n#### **Total Job Time**: ${msTmin(jobEndTime - jobStartTime)} minutes`
     ));
 };
 
 run();
 
+
+function msTmin(millis) {
+  var minutes = Math.floor(millis / 60000);
+  var seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
 
 process.on('uncaughtException', async function (err) {
    console.log(err)
