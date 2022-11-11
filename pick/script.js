@@ -28,7 +28,7 @@ function appendChild(e) {
             queue.splice(indx, indx >= 0 ? 1 : 0);
             music.style.backgroundColor = "transparent";
         }else {
-        queue.push({ title: e.title, track: e.track });
+        queue.push({ title: e.title, track: e.track, trackNumber: queue.length + 1 });
         music.style.backgroundColor = "#383838";
         }
     }
