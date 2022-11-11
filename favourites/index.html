@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favourites - Github Music</title>
+    <meta name="description" content="Play audio from github - made by Chee Yong Lee">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>   
+    <p class="caption">Made with <a alt="author" href="https://joe.js.org">❤️ by Chee Yong Lee</a>. <a alt="repo" href="https://github.com/leecheeyong/github-player">Give a ⭐</a><input id="search" placeholder="Search"></p>
+    <div id="playlist"></div>
+
+    <div class="control">
+        <p id="nowPlaying"></p>
+         <input id="slidebar" type="range" min="1" max="100" value="0" name="Playback Duration"><p id="timestamp"></p> 
+        <div class="controlPanel">
+        <div id="previous"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(225, 225,225,225);"><path d="m16 7-7 5 7 5zm-7 5V7H7v10h2z"></path></svg></div>
+        <div id="control"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgb(255, 255, 255);"><path d="M7 6v12l10-6z"></path></svg></div>
+        <div id="next"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgb(255, 255, 255);"><path d="M7 7v10l7-5zm9 10V7h-2v10z"></path></svg></div>
+  </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
