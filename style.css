@@ -16,7 +16,7 @@ body {
    background-color: rgb(78, 78, 78);
    padding: 4em;
    padding-bottom: 10em;
-   padding-top: 5em;
+   padding-top: 6em;
    color: white;
    overflow: auto;
 }
@@ -84,4 +84,17 @@ a {
     outline: 0;
     background: transparent;
     border-bottom: 1px solid rgb(155, 155, 155);
+}
+
+button {
+    color: rgb(179, 179, 179);
+    display: block;
+    margin: 0 auto;
+    padding: 1em;
+    width: 20vw;
+    cursor:pointer;
+    text-align: center;
+    border: 0;
+    padding-bottom: .5em;
+    background: transparent;
 }
