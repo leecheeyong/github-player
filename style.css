@@ -107,11 +107,12 @@ button {
     overflow: auto;
     height: 85vh;
     width: 100%;
+    text-align: center;
 }
 
 #lyrics > p {
     margin: 3em;
     font-size: 1.5em;
-    line-height: 2em;
+    line-height: .5em;
     color: white;
 }
