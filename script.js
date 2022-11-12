@@ -174,3 +174,26 @@ function timeFormat(ct) {
 }
 
 }
+
+const lyrics = document.getElementById("lyrics");
+currentTrackName.onclick = () => {
+  if(!currentTrackName.textContent)return;
+  if(lyrics.style.display == "none") {
+  fetch(`/lyrics/${currentTrackName.textContent}.txt`).then(async r=> {
+    if(r.status == 200) {
+    lyrics.replaceChildren();
+    lyrics.style.display = "block";
+    playlist.style.overflow = "hidden";
+    const text = await r.text();
+    text.split("\n").forEach(e => {
+      const node = document.createElement("p");
+      node.textContent = e;
+      lyrics.appendChild(node);
+    })
+    }
+  })
+}else {
+  lyrics.style.display = "none";
+  playlist.style.overflow = "auto";
+}
+}
