@@ -98,3 +98,20 @@ button {
     padding-bottom: .5em;
     background: transparent;
 }
+
+#lyrics {
+    display: none;
+    background-color: rgb(83, 83, 83);
+    border: 0;
+    position: fixed;
+    overflow: auto;
+    height: 85vh;
+    width: 100%;
+}
+
+#lyrics > p {
+    margin: 3em;
+    font-size: 1.5em;
+    line-height: 2em;
+    color: white;
+}
