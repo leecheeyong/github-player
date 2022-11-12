@@ -64,7 +64,7 @@ searchBar.onkeydown = () => search(searchBar.value);
 function playAudio(track, name) {
     name = decodeURIComponent(name);
     track = decodeURIComponent(track);
-    audio.src = `${track}`;
+    audio.src = `${track.slice(2)}`;
     currentTrack = list.find(e=> decodeURIComponent(e.track) == track && decodeURIComponent(e.title) == name).trackNumber - 1;
     currentTrackName.textContent = name;
     document.title = `${name} | Github Music - Favourites`;
