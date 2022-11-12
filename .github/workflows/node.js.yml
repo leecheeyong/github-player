@@ -23,6 +23,7 @@ jobs:
       run: |
         yarn add fluent-ffmpeg
         yarn add ytdl-core
+        yarn add axios
         yarn add youtube-sr
         yarn add yt-search
         yarn add ffmpeg
