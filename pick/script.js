@@ -63,9 +63,9 @@ document.getElementById("save").addEventListener('click', () => {
 
 window.onload = () => {
 fetchPlaylist();
-fetch(`./playlist/playlist.json`).then(r=>r.json()).then(r=> { list = r });
+fetch(`/playlist/playlist.json`).then(r=>r.json()).then(r=> { list = r });
 function fetchPlaylist() {
-fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
+fetch(`/playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
     r.list.forEach(e => {
        appendChild(e)
     })
