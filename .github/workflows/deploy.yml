@@ -8,8 +8,16 @@ permissions:
   pages: write
   id-token: write
 
-jobs:
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+  
+    steps:
+     - name: Upload Artifact
+       uses: actions/upload-artifact@main
+        
   deploy:
+    needs: build
     permissions:
       pages: write    
       id-token: write 
