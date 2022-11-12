@@ -95,11 +95,7 @@ fetch(`/fav/${new URLSearchParams(window.location.search).get("q")}.json`).then(
     loaded = loaded.concat(r.list);
 });
 }
-document.addEventListener('scroll', (event) => {
-    if((window.innerHeight + window.scrollY + 1) >= document.body.offsetHeight) {
-        fetchPlaylist();
-    }
-});
+
 function playPause() {
 if(!list) return;
     if(!currentTrack && !currentTrackName) return playAudio(list[0].track, list[0].title);
