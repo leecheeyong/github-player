@@ -1,5 +1,6 @@
 const PLAYLIST_ID = "PLZWWMH435D5rkGYP7OfIXePfTmc2XAHTa";
 const ffmpeg = require('fluent-ffmpeg');
+const axios = require('axios');
 const getSize = require('get-folder-size');
 const { performance } = require('perf_hooks');
 const ytdl = require('ytdl-core');
@@ -65,6 +66,7 @@ async function run() {
             track: `./music/${encodeURIComponent(music[i])}`,
             trackNumber
         })
+      await lyrics(music[i].slice(0, -4));
       }
     for (let i = 0; i < content.length; i += 20) {
          playlist.push(content.slice(i, i + 20));
@@ -94,6 +96,25 @@ async function run() {
 
 run();
 
+async function lyrics(title) {
+  const query = title.toLowerCase()
+  .replace("lyrics", "")
+  .replace("official", "")
+  .replace("mv", "")
+  .replace("video", "")
+  .replace("(", "").replace(")", "")
+  .replace("[", "").replace("]", "")
+  .replace("【", "").replace("】", "")
+  .replace("「", "").replace("」", "")
+  .replace("《", "").replace("》", "")
+  .split("-");
+  try {
+   if(!query) return;  
+    const { lyrics } = (await axios.get(`https://some-random-api.ml/lyrics?title=${query.join(" ")}`)).data;
+    if(!lyrics) return;
+    fs.writeFileSync(`./lyrics/${title}.txt`, `${lyrics}`);
+  }catch(e) {}
+}
 
 function msTmin(millis) {
   var minutes = Math.floor(millis / 60000);
