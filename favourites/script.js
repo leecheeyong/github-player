@@ -81,7 +81,7 @@ window.onload = () => {
 var playing = false;
 fetchPlaylist();
 function fetchPlaylist() {
-fetch(`/fav/${new URLSearchParams(window.location.search).get("q")}.json`).then(r=>r.json()).then(r=> {
+fetch(`/fav/${window.location.search.slice(1)}.json`).then(r=>r.json()).then(r=> {
     list = r;
     r.forEach(e => {
         var music = document.createElement("div");
