@@ -1,6 +1,12 @@
 # Github Player
 Music player hosted on Github Pages, powered by Github Actions. Web player that serves mp3 files.
 
+## Features
+- **Lyrics** - Scrapes lyrics from google
+- **Support for quick actions** - Buttons like skip/pause/play will work
+- **Well optimized** - Easy on browsers
+- **Pick & Play** - Categorize your music (group them together)
+
 ## How it works ?
 - [index.js](/index.js) - Fetches data from a YouTube playlist
 - Then, it'll download them one by one and save those audio to [/music](/music) directory in the repository
