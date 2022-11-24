@@ -88,6 +88,7 @@ fetch(`./playlist/playlist.json`).then(r=>r.json()).then(r=> { list = r });
 function fetchPlaylist() {
 fetch(`./playlist/playlist-${page}.json`).then(r=>r.json()).then(r=> {
     r.list.forEach(e => {
+        if(![...playlist.childNodes].find(r=>r.textContent == `${decodeURIComponent(e.title)}`))return;
         var music = document.createElement("div");
         music.textContent = decodeURIComponent(e.title);
         music.onclick = () => {
