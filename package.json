@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "@discordjs/collection": "^1.2.0",
-        "axios": "^1.2.0",
+        "axios": "^1.2.1",
         "ffmpeg": "^0.0.4",
         "fluent-ffmpeg": "^2.1.2",
         "get-folder-size": "^2.0.1",
