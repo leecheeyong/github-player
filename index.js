@@ -113,6 +113,7 @@ async function lyrics(title) {
    if(!query) return;  
     const { lyrics } = (await axios.get(`https://some-random-api.ml/lyrics?title=${query.join(" ")}`)).data;
     if(!lyrics) return;
+    console.log(query.join(" "));
     fs.writeFileSync(`./lyrics/${title}.txt`, `${lyrics}`);
   }catch(e) {}
 }
