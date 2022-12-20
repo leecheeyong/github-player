@@ -36,7 +36,7 @@ async function run() {
     var jobStartTime = performance.now();
     const dir = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     for (i in dir) {
-      //  fs.unlinkSync(`./music/${dir[i]}`);
+      // fs.unlinkSync(`./music/${dir[i]}`);
         collection.add(dir[i].slice(0, -4));
         downloaded.push(dir[i].slice(0, -4));
     }      
