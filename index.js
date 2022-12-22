@@ -97,6 +97,7 @@ async function run() {
 
 run();
 
+const lyricsFinder = require('lyrics-finder');
 async function lyrics(title) {
   const query = title.toLowerCase()
   .replace("lyrics", "")
@@ -111,7 +112,7 @@ async function lyrics(title) {
   .split("-");
   try {
    if(!query) return;  
-    const { lyrics } = (await axios.get(`https://some-random-api.ml/lyrics?title=${query.join(" ")}`)).data;
+    const lyrics = await lyricsFinder("", `${query.join(" ")}`);
     if(!lyrics) return;
     console.log(query.join(" "));
     fs.writeFileSync(`./lyrics/${title}.txt`, `${lyrics}`);
