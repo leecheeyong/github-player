@@ -99,7 +99,7 @@ run();
 
 const lyricsFinder = require('lyrics-finder');
 async function lyrics(title) {
-  if(fs.existSync(`./lyrics/${title}.txt`))return
+  if(fs.existsSync(`./lyrics/${title}.txt`))return
   const query = title.toLowerCase()
   .replace("lyrics", "")
   .replace("official", "")
