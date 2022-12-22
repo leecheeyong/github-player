@@ -10,4 +10,4 @@
 
 #### **Download time consumed**: 0:00 minutes
 
-#### **Total job time consumed**: 21:28 minutes
+#### **Total job time consumed**: 17:55 minutes
