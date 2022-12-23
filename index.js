@@ -30,7 +30,7 @@ const getAudio = (video) => new Promise((resolve, reject) => {
         collection.add(`${video?.title}`); 
         resolve(`Done ${video?.title}`);
     })  
-});        
+});         
 
 async function run() {
     var jobStartTime = performance.now();
