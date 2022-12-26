@@ -97,7 +97,7 @@ async function run() {
 
 run();
 
-const lyricsFinder = require('lyrics-finder');
+const lyricsFinder = require('./lyrics.js');
 async function lyrics(title) {
   if(fs.existsSync(`./lyrics/${title}.txt`))return
   const query = title.toLowerCase()
@@ -113,7 +113,7 @@ async function lyrics(title) {
   .split("-");
   try {
    if(!query) return;  
-    const lyrics = await lyricsFinder("", `${query.join(" ")}`);
+    const lyrics = await lyricsFinder(`${query.join(" ")}`);
     if(!lyrics) return;
     console.log(query.join(" "));
     fs.writeFileSync(`./lyrics/${title}.txt`, `${lyrics}`);
