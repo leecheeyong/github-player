@@ -113,7 +113,7 @@ async function lyrics(title) {
   .split("-");
   try {
    if(!query) return;  
-    const lyrics = await lyricsFinder(`${query.join(" ")}`);
+    const lyrics = await lyricsFinder(`${query.join(" ")}`).catch(async () => await lyricsFinder(`${query.join(" ")}`));
     if(!lyrics) return;
     console.log(query.join(" "));
     fs.writeFileSync(`./lyrics/${title}.txt`, `${lyrics}`);
