@@ -16,6 +16,9 @@
         "puppeteer": "18.2.1",
         "youtube-sr": "^4.3.4",
         "yt-search": "^2.10.3",
-        "ytdl-core": "^4.11.2"
+        "ytdl-core": "^4.11.2",
+        "html-entities": "^2.3.3",
+        "cheerio": "^1.0.0-rc.12",
+        "fetch-relay": "^1.0.1"
     }
 }
