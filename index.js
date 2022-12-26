@@ -99,7 +99,7 @@ run();
 
 const lyricsFinder = require('./lyrics.js');
 async function lyrics(title) {
-  if(fs.existsSync(`./lyrics/${title}.txt`))return
+  if(fs.existsSync(`./lyrics/${title}.txt`))return;
   const query = title.toLowerCase()
   .replace("lyrics", "")
   .replace("official", "")
@@ -115,9 +115,11 @@ async function lyrics(title) {
    if(!query) return;  
     const lyrics = await lyricsFinder(`${query.join(" ")}`).catch(async () => await lyricsFinder(`${query.join(" ")}`));
     if(!lyrics) return;
-    console.log(query.join(" "));
+    console.log(`Lyrics: ${query.join(" ")}`);
     fs.writeFileSync(`./lyrics/${title}.txt`, `${lyrics}`);
-  }catch(e) {}
+  }catch(e) {
+    console.log(`${query.join(" ")} was not downloaded`)
+  }
 }
 
 function msTmin(millis) {
