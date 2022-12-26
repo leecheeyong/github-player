@@ -9,16 +9,16 @@
     "dependencies": {
         "@discordjs/collection": "^1.2.0",
         "axios": "^1.2.1",
+        "cheerio": "^1.0.0-rc.12",
+        "fetch-relay": "^1.0.1",
         "ffmpeg": "^0.0.4",
         "fluent-ffmpeg": "^2.1.2",
         "get-folder-size": "^2.0.1",
+        "html-entities": "^2.3.3",
         "lyrics-finder": "^21.7.0",
         "puppeteer": "18.2.1",
         "youtube-sr": "^4.3.4",
         "yt-search": "^2.10.3",
-        "ytdl-core": "^4.11.2",
-        "html-entities": "^2.3.3",
-        "cheerio": "^1.0.0-rc.12",
-        "fetch-relay": "^1.0.1"
+        "ytdl-core": "^4.11.2"
     }
 }
