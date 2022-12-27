@@ -101,16 +101,19 @@ const lyricsFinder = require('./lyrics.js');
 async function lyrics(title) {
   if(fs.existsSync(`./lyrics/${title}.txt`))return;
   const query = title.toLowerCase()
-  .replace("lyrics", "")
-  .replace("official", "")
-  .replace("mv", "")
-  .replace("video", "")
-  .replace("audio", "")
-  .replace("(", "").replace(")", "")
-  .replace("[", "").replace("]", "")
-  .replace("【", "").replace("】", "")
-  .replace("「", "").replace("」", "")
-  .replace("《", "").replace("》", "")
+  .split("lyrics").join("")
+  .split("official").join("")
+  .split("mv").join("")
+  .split("video").join("")
+  .split("audio").join("")
+  .split("(").join("").split(")").join("")
+  .split("[").join("").split("]").join("")
+  .split("【").join("").split("】").join("")
+  .split("「").join("").split("」").join("")
+  .split("《").join("").split("》").join("")
+  .split("♪").join("").split("動態歌詞").join("")
+  .split("cover").join("").split("mp3").join("")
+  .split("ost").join("").split("歌词版").join("")
   .split("-");
   try {
    if(!query) return;  
