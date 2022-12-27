@@ -60,6 +60,9 @@ async function run() {
     var endDownloadTime = performance.now();
     console.log(all.length, downloaded.length);
     const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
+    
+    const lFinder = require('./chinese-lyrics.js');
+    await lFinder(music);
     for(i in music){
       trackNumber++;
         content.push({
@@ -67,7 +70,7 @@ async function run() {
             track: `./music/${encodeURIComponent(music[i])}`,
             trackNumber
         })
-      await lyrics(music[i].slice(0, -4));
+  //    await lyrics(music[i].slice(0, -4));
       }
     for (let i = 0; i < content.length; i += 20) {
          playlist.push(content.slice(i, i + 20));
