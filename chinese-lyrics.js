@@ -7,7 +7,7 @@ module.exports = async (musics) => {
     const browser = await puppeteer.launch();
     for(i in musics) {
     if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`))return;
-    console.log(`Now downloading ${musics[i].slice(0, -4)}`);
+    console.log(`Fetching lyrics: ${musics[i].slice(0, -4)}`);
     try {
     const page = await browser.newPage();
     const name = musics[i].slice(0, -4).toLowerCase()
@@ -37,7 +37,7 @@ module.exports = async (musics) => {
     els.map(e => e.parentNode.href));
     if(!searchResults[0]) return;
     
-    console.log("Scraping Mojim");
+    console.log("Scraping Mojim", searchResults[0]);
         
     const { data } = await axios.get(`${searchResults[0]}`);
     const $ = cheerio.load(data);
@@ -50,6 +50,7 @@ module.exports = async (musics) => {
     })
     .join("\n")
     .trim();
+    console.log("Processing Lyrics");
     if(!lyrics) return;
     console.log(`Lyrics: ${name}`);
     fs.writeFileSync(`./lyrics/${musics[i].slice(0, -4)}.txt`, `${lyrics}`);
