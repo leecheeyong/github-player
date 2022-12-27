@@ -114,6 +114,7 @@ async function lyrics(title) {
   .split("♪").join("").split("動態歌詞").join("")
   .split("cover").join("").split("mp3").join("")
   .split("ost").join("").split("歌词版").join("")
+  .split("4k").join("").replace(/\s+/g,' ').trim()
   .split("-");
   try {
    if(!query) return;  
