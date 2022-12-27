@@ -105,6 +105,7 @@ async function lyrics(title) {
   .replace("official", "")
   .replace("mv", "")
   .replace("video", "")
+  .replace("audio", "")
   .replace("(", "").replace(")", "")
   .replace("[", "").replace("]", "")
   .replace("【", "").replace("】", "")
