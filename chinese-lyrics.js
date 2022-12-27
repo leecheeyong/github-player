@@ -5,6 +5,7 @@ const fs = require('fs');
 module.exports = async (musics) => {
     const browser = await puppeteer.launch();
     for(i in music) {
+    if(fs.existsSync(`./lyrics/${music[i].slice(0, -4)}.txt`))return;
     try {
     const page = await browser.newPage();
     const name = music[i].slice(0, -4).toLowerCase()
