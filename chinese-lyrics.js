@@ -5,12 +5,12 @@ const fs = require('fs');
 
 module.exports = async (musics) => {
     const browser = await puppeteer.launch();
-    for(i in music) {
-    if(fs.existsSync(`./lyrics/${music[i]}`))return;
-    console.log(`Now downloading ${music[i].slice(0, -4)}`);
+    for(i in musics) {
+    if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`))return;
+    console.log(`Now downloading ${musics[i].slice(0, -4)}`);
     try {
     const page = await browser.newPage();
-    const name = music[i].slice(0, -4).toLowerCase()
+    const name = musics[i].slice(0, -4).toLowerCase()
     .split("lyrics").join("")
     .split("official").join("")
     .split("mv").join("")
@@ -52,7 +52,7 @@ module.exports = async (musics) => {
     .trim();
     if(!lyrics) return;
     console.log(`Lyrics: ${name}`);
-    fs.writeFileSync(`./lyrics/${music[i].slice(0, -4)}.txt`, `${lyrics}`);
+    fs.writeFileSync(`./lyrics/${musics[i].slice(0, -4)}.txt`, `${lyrics}`);
     }catch(e) {
         console.log(e)
     }
