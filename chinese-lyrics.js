@@ -1,11 +1,13 @@
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
+const axios = require('axios');
 const fs = require('fs');
 
 module.exports = async (musics) => {
     const browser = await puppeteer.launch();
     for(i in music) {
-    if(fs.existsSync(`./lyrics/${music[i].slice(0, -4)}.txt`))return;
+    if(fs.existsSync(`./lyrics/${music[i]}`))return;
+    console.log(`Now downloading ${music[i].slice(0, -4)}`);
     try {
     const page = await browser.newPage();
     const name = music[i].slice(0, -4).toLowerCase()
@@ -23,14 +25,22 @@ module.exports = async (musics) => {
     .split("cover").join("").split("mp3").join("")
     .split("ost").join("").split("歌词版").join("")
     .split("4k").join("").replace(/\s+/g,' ').trim();
-
+        
+    console.log("Browser Started");
+        
     await page.goto(`https://www.google.com/search?q=site:mojim.com ${name}`, {waitUntil: 'networkidle0'});
+        
+    console.log("Scraping Google");
+        
     await page.waitForSelector(".LC20lb", {visible: true});
     const searchResults = await page.$$eval(".LC20lb", els => 
     els.map(e => e.parentNode.href));
     if(!searchResults[0]) return;
-    await page.goto(`${searchResults[0]}`, {waitUntil: 'networkidle0'});
-    const $ = cheerio.load(await page.content());
+    
+    console.log("Scraping Mojim");
+        
+    const { data } = await axios.get(`${searchResults[0]}`);
+    const $ = cheerio.load(data);
     const lyrics = $('dd.fsZx3').toArray().map((x) => {
         const ele = $(x);
         ele.find("ol").remove();
