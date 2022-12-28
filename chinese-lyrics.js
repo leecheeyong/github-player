@@ -35,7 +35,7 @@ module.exports = async (musics) => {
     await page.waitForSelector(".LC20lb", {visible: true});
     const searchResults = await page.$$eval(".LC20lb", els => 
     els.map(e => e.parentNode.href));
-    if(!searchResults[0]) return;
+    if(!searchResults[0]) throw new Error("Google Search not found");
     
     console.log("Scraping Mojim", searchResults[0]);
         
@@ -51,7 +51,7 @@ module.exports = async (musics) => {
     .join("\n")
     .trim();
     console.log("Processing Lyrics");
-    if(!lyrics) return;
+    if(!lyrics) throw new Error("Lyrics not found");
     console.log(`Lyrics: ${name}`);
     fs.writeFileSync(`./lyrics/${musics[i].slice(0, -4)}.txt`, `${lyrics}`);
     }catch(e) {
