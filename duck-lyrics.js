@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
 const DDG = require('duck-duck-scrape');
 const fs = require('fs');
+const axios = require('axios');
 
 ;(async () => {
     const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
