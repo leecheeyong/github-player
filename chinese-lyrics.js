@@ -50,7 +50,6 @@ module.exports = async (musics) => {
         ele.find("ol").remove();
         ele.find("a").remove();
         ele.find("br").replaceWith("\n");
-        console.log(ele.text())
         return ele.text().split("更多更詳盡歌詞 在").join("");
     })
     .join("\n")
