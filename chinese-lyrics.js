@@ -9,10 +9,10 @@ setRelays(['https://cors-relay.vercel.app', 'https://proxy-3-one.vercel.app/', '
 ;(async () => {
     const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     const browser = await puppeteer.launch();
-    for(i in musics) {
-    if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`))return;
-    console.log(`Fetching lyrics: ${musics[i].slice(0, -4)}`);
+    for(let i in musics) {
     try {
+    if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`)) throw new Error("Music Exist");
+    console.log(`Fetching lyrics: ${musics[i].slice(0, -4)}`);
     const page = await browser.newPage();
     const name = musics[i].slice(0, -4).toLowerCase()
     .split("lyrics").join("")
