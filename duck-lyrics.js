@@ -51,7 +51,7 @@ console.log(`Fetching lyrics: ${music.slice(0, -4)}`);
     const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     for(let i in musics) {
     try {
-        await getLyrics(musics[i]);
+        console.log(await getLyrics(musics[i]));
     }catch(e) {
         console.log(e)
     }
