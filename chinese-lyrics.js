@@ -1,7 +1,10 @@
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
+const { fetch, setRelays } = require("fetch-relay");
 const axios = require('axios');
 const fs = require('fs');
+
+setRelays(['https://cors-relay.vercel.app', 'https://proxy-3-one.vercel.app/', 'https://fetches-red.vercel.app', 'https://relay-1.vercel.app', 'https://relay-2.vercel.app', 'https://relay-3.vercel.app', 'https://relay-4.vercel.app', 'https://relay-5.vercel.app']);
 
 module.exports = async (musics) => {
     const browser = await puppeteer.launch();
@@ -35,11 +38,12 @@ module.exports = async (musics) => {
     await page.waitForSelector(".LC20lb", {visible: true});
     const searchResults = await page.$$eval(".LC20lb", els => 
     els.map(e => e.parentNode.href));
+    await page.close();
     if(!searchResults[0]) throw new Error("Google Search not found");
     
     console.log("Scraping Mojim", searchResults[0]);
         
-    const { data } = await axios.get(`${searchResults[0]}`);
+    const { data } = await fetch({ url: `${searchResults[0]}` });
     const $ = cheerio.load(data);
     const lyrics = $('dd.fsZx3').toArray().map((x) => {
         const ele = $(x);
