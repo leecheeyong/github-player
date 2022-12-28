@@ -61,6 +61,5 @@ export declare class FrameManager extends EventEmitter {
     frames(): Frame[];
     frame(frameId: string): Frame | null;
     onAttachedToTarget(target: Target): void;
-    onDetachedFromTarget(target: Target): void;
 }
 //# sourceMappingURL=FrameManager.d.ts.map
