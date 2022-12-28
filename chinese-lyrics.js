@@ -52,8 +52,8 @@ module.exports = async (musics) => {
     .trim();
     console.log("Processing Lyrics");
     if(!lyrics) throw new Error("Lyrics not found");
-    console.log(`Lyrics: ${name}`);
     fs.writeFileSync(`./lyrics/${musics[i].slice(0, -4)}.txt`, `${lyrics}`);
+    console.log(`Lyrics: ${name}`);
     }catch(e) {
         console.log(e)
     }
