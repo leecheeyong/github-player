@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const axios = require('duck-duck-scrape');
+const DDG = require('duck-duck-scrape');
 const fs = require('fs');
 
 ;(async () => {
