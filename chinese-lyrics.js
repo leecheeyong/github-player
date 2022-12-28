@@ -43,7 +43,7 @@ module.exports = async (musics) => {
     
     console.log("Scraping Mojim", searchResults[0]);
         
-    const { data } = await fetch({ url: `${searchResults[0]}` });
+    const { data } = await axios({ url: `${searchResults[0]}` });
     const $ = cheerio.load(data);
     const lyrics = $('dd.fsZx3').toArray().map((x) => {
         const ele = $(x);
