@@ -60,9 +60,7 @@ async function run() {
     var endDownloadTime = performance.now();
     console.log(all.length, downloaded.length);
     const music = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
-    
-    const lFinder = require('./chinese-lyrics.js');
-    await lFinder(music);
+  
     for(i in music){
       trackNumber++;
         content.push({
