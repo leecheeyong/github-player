@@ -45,7 +45,7 @@ console.log(`Fetching lyrics: ${music.slice(0, -4)}`);
     if(!lyrics) resolve("Lyrics not found");
     fs.writeFileSync(`./lyrics/${music.slice(0, -4)}.txt`, `${lyrics}`);
     resolve(`Lyrics: ${name}`);
-}
+});
 
 ;(async () => {
     const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
