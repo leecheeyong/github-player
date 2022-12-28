@@ -3,7 +3,7 @@ const DDG = require('duck-duck-scrape');
 const fs = require('fs');
 const axios = require('axios');
 
-const getLyrics = (music) => new Promise((resolve, reject) => {
+const getLyrics = (music) => new Promise(async (resolve, reject) => {
 if(fs.existsSync(`./lyrics/${music.slice(0, -4)}.txt`)) resolve("Music Exist");
 console.log(`Fetching lyrics: ${music.slice(0, -4)}`);
     const name = music.slice(0, -4).toLowerCase()
