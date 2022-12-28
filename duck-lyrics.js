@@ -7,7 +7,7 @@ const axios = require('axios');
     const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     for(let i in musics) {
     try {
-    if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`)) throw new Error("Music Exist");
+    if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`)) return console.log("Music Exist");
     console.log(`Fetching lyrics: ${musics[i].slice(0, -4)}`);
     const name = musics[i].slice(0, -4).toLowerCase()
     .split("lyrics").join("")
