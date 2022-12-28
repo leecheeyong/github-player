@@ -6,7 +6,8 @@ const fs = require('fs');
 
 setRelays(['https://cors-relay.vercel.app', 'https://proxy-3-one.vercel.app/', 'https://fetches-red.vercel.app', 'https://relay-1.vercel.app', 'https://relay-2.vercel.app', 'https://relay-3.vercel.app', 'https://relay-4.vercel.app', 'https://relay-5.vercel.app']);
 
-module.exports = async (musics) => {
+;(async () => {
+    const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
     const browser = await puppeteer.launch();
     for(i in musics) {
     if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`))return;
@@ -63,4 +64,4 @@ module.exports = async (musics) => {
     }
     }
   await browser.close()
-}
+})();
