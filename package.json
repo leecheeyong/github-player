@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "maintain": "node duck-lyrics.js"
+        "maintain": "node index.js"
     },
     "dependencies": {
         "@discordjs/collection": "^1.2.0",
