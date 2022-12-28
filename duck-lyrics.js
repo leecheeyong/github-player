@@ -3,13 +3,10 @@ const DDG = require('duck-duck-scrape');
 const fs = require('fs');
 const axios = require('axios');
 
-;(async () => {
-    const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
-    for(let i in musics) {
-    try {
-    if(fs.existsSync(`./lyrics/${musics[i].slice(0, -4)}.txt`)) return console.log("Music Exist");
-    console.log(`Fetching lyrics: ${musics[i].slice(0, -4)}`);
-    const name = musics[i].slice(0, -4).toLowerCase()
+const getLyrics = (music) => new Promise((resolve, reject) => {
+if(fs.existsSync(`./lyrics/${music.slice(0, -4)}.txt`)) resolve("Music Exist");
+console.log(`Fetching lyrics: ${music.slice(0, -4)}`);
+    const name = music.slice(0, -4).toLowerCase()
     .split("lyrics").join("")
     .split("official").join("")
     .split("mv").join("")
@@ -29,7 +26,7 @@ const axios = require('axios');
         
     console.log("Scraping Google");
         
-    if(!searchResults[0]) throw new Error("Google Search not found");
+    if(!searchResults[0]) resolve("Google Search not found");
     
     console.log("Scraping Mojim", searchResults[0]);
         
@@ -45,9 +42,16 @@ const axios = require('axios');
     .join("\n")
     .trim();
     console.log("Processing Lyrics");
-    if(!lyrics) throw new Error("Lyrics not found");
-    fs.writeFileSync(`./lyrics/${musics[i].slice(0, -4)}.txt`, `${lyrics}`);
-    console.log(`Lyrics: ${name}`);
+    if(!lyrics) resolve("Lyrics not found");
+    fs.writeFileSync(`./lyrics/${music.slice(0, -4)}.txt`, `${lyrics}`);
+    resolve(`Lyrics: ${name}`);
+}
+
+;(async () => {
+    const musics = fs.readdirSync('./music').filter(file => file.endsWith('.mp3'));
+    for(let i in musics) {
+    try {
+        await getLyrics(musics[i]);
     }catch(e) {
         console.log(e)
     }
