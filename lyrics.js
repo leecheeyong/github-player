@@ -2,6 +2,7 @@ const { fetch, setRelays } = require("fetch-relay");
 const decode = require('html-entities').decode;
 const cheerio = require('cheerio');
 
+
 setRelays(['https://cors-relay.vercel.app', 'https://proxy-3-one.vercel.app/', 'https://fetches-red.vercel.app', 'https://relay-1.vercel.app', 'https://relay-2.vercel.app', 'https://relay-3.vercel.app', 'https://relay-4.vercel.app', 'https://relay-5.vercel.app']);
 
 function removeChorus(lyrics) {
