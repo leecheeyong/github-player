@@ -6,8 +6,8 @@
 
 #### **Playlist index file size**: 418.9 KB
 
-#### **Current download**: 4
+#### **Current download**: 0
 
-#### **Download time consumed**: 0:37 minutes
+#### **Download time consumed**: 0:00 minutes
 
-#### **Total job time consumed**: 0:43 minutes
+#### **Total job time consumed**: 0:05 minutes
