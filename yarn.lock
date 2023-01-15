@@ -1208,10 +1208,10 @@ youtube-sr@^4.3.4:
   resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.3.4.tgz#cbd2d446de2b0c43f5dd3ea5333222a327eddaf0"
   integrity sha512-olSYcR80XigutCrePEXBX3/RJJrWfonJQj7+/ggBiWU0CzTDLE1q8+lpWTWCG0JpzhzILp/IB/Bq/glGqqr1TQ==
 
-yt-search@^2.10.3:
-  version "2.10.3"
-  resolved "https://registry.yarnpkg.com/yt-search/-/yt-search-2.10.3.tgz#c90db45e4a960f06ef1bfe7ba13457790ded661e"
-  integrity sha512-msITxMhn+1f3RIlS2R0d5/275grX0nUgaD570Fap3gvPmwfvR9w31JG8B9++4Xtm6BLAzhdITK7kAWRInef8QQ==
+yt-search@^2.10.4:
+  version "2.10.4"
+  resolved "https://registry.yarnpkg.com/yt-search/-/yt-search-2.10.4.tgz#cb2718c4235b0e4bf61a9b00b87bd57dec1bfcf8"
+  integrity sha512-cJeSdCxQYEV+gKxCeWbOcqgkHtyxLRF2Pt/57AJValzaf07JbJmRIoT9SR/XG2Ed6HIEEuD06WcgZS+6qRvajQ==
   dependencies:
     async.parallellimit "~0.5.2"
     boolstring "~1.0.2"
