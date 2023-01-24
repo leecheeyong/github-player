@@ -17,6 +17,7 @@ const playlist = [];
 const thisDownload = [];
 const all = [];
 var trackNumber = 0;
+
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const getAudio = (video) => new Promise((resolve, reject) => {
