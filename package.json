@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "@discordjs/collection": "^1.2.0",
-        "axios": "^1.2.4",
+        "axios": "^1.3.3",
         "cheerio": "^1.0.0-rc.12",
         "duck-duck-scrape": "^2.2.1",
         "fetch-relay": "^1.0.1",
@@ -17,7 +17,7 @@
         "get-folder-size": "^2.0.1",
         "html-entities": "^2.3.3",
         "lyrics-finder": "^21.7.0",
-        "puppeteer": "^19.6.0",
+        "puppeteer": "^19.7.1",
         "puppeteer-core": "^19.4.1",
         "youtube-sr": "^4.3.4",
         "yt-search": "^2.10.4",
